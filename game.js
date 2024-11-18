@@ -77,7 +77,6 @@ function startGame() {
     document.getElementById('start-button').style.display = 'none'; // Hide the start button
     document.getElementById('retry-button').style.display = 'none'; // Hide the retry button
     document.getElementById('game-over-text').style.display = 'none'; // Hide the Game Over text
-    document.getElementById('message-container').innerHTML = ''; // Clear message container
     score = 0; // Reset the score
     initializeBricks(); // Ensure bricks are loaded when the game starts
     balls = [new Ball()]; // Reset the balls array to ensure a new ball is created
@@ -140,6 +139,7 @@ function draw() {
         fill(message.color);
         textSize(message.fontSize);
         textStyle(message.style);
+        textFont('Press Start 2P'); // Change font to "Press Start 2P"
         text(message.text, message.x, message.y);
         message.duration -= deltaTime;
         if (message.duration <= 0) {
@@ -274,8 +274,8 @@ class Brick {
         this.y = y;
         this.special = special;
         this.powerUp = powerUp;
-        const colors = ['#F21616', '#F26A1B', '#F29D35', '#F2E1AC', '#547326'];
-        this.color = special ? '#FFD700' : random(colors); // Gold color for special bricks
+        const colors = ['#F00901', '#08F01C', '#DB00F0', '#F27127', '#0114F0'];
+        this.color = special ? '#EFE100' : random(colors); // Gold color for special bricks
     }
 
     show() {
