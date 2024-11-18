@@ -1,19 +1,25 @@
 <!-- filepath: /workspaces/SANDA-Pre-GameJam/README.md -->
 
-# Breakout Ranitas SANDA
+# 💥🔴💨🐸    Breakout Ranitas SANDA  👾💥🔴💨
 
-¡Bienvenido al proyecto Breakout Ranitas SANDA! Este proyecto es un juego de Breakout pensado para que puedas poner en práctica algunos conocimientos básicos de Git y GItHub y conozcas algunas de las herramientas que tienes a tu alcance.
+![image](https://github.com/user-attachments/assets/6586e1bb-b981-4745-af82-a22dd4241fe0)
 
-## Contribuir al Proyecto
 
-¡Gracias por tu interés en contribuir a este proyecto! Por favor, revisa el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para obtener instrucciones detalladas sobre cómo puedes contribuir.
+**¡Bienvenido al proyecto Breakout Ranitas SANDA!**
+
+Este proyecto es un juego de Breakout pensado para que puedas poner en práctica algunos conocimientos básicos de Git y GItHub y conozcas algunas de las herramientas que tienes a tu alcance.
+
+
 
 > [!IMPORTANT]
 > Este proyecto está alojado en un Codespace, para crear uno sigue las instrucciones que aparecen abajo 🔽🔽
 
-1. Ve a la página del repositorio en GitHub.
+1. Para empezar a trabajar en este proyecto, ve a la página del repositorio en GitHub.
 2. Haz clic en el botón `Code` y selecciona `Open with Codespaces`.
 3. Si no tienes un Codespace existente, crea uno nuevo.
+
+> [!WARNING]
+> Por favor, revisa el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para obtener instrucciones detalladas sobre cómo puedes contribuir.
 
 ## Recursos
 
@@ -25,4 +31,4 @@
 ¡Esperamos tus contribuciones y verte en el leaderboard 🏆💗!
 
 > [!NOTE]
-> 🚨Todas las actividades relacionadas a Ranitas Lúdicas se rigne en torno al siguiente [código de conducta](https://github.com/Ranitas-Ludicas/.github?tab=coc-ov-file)
+> 🚨Todas las actividades relacionadas a Ranitas Lúdicas se rigen en torno al siguiente [código de conducta](https://github.com/Ranitas-Ludicas/.github?tab=coc-ov-file)
