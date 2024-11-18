@@ -157,7 +157,7 @@ main {
     margin-bottom: 10px;
     border-bottom: 2px solid white;
     padding-bottom: 10px;
-    color: lightblue; /* Change text color to light blue */
+    color: #FFA8DC; /* Change text color to #FFA8DC */
     font-family: 'Press Start 2P', cursive; /* Retro font */
 }
 
@@ -166,7 +166,7 @@ main {
     justify-content: space-around;
     align-items: center;
     margin: 10px 0;
-    color: lightblue; /* Change text color to light blue */
+    color: #9AC669; /* Change text color to #9AC669 */
     font-family: 'Press Start 2P', cursive; /* Retro font */
 }
 
@@ -320,4 +320,16 @@ main {
     color: white;
     text-transform: uppercase;
     margin-bottom: 20px;
+}
+
+#social-media-links {
+    margin-top: 10px;
+}
+
+#social-media-links a {
+    margin: 0 10px;
+}
+
+#social-media-links img {
+    vertical-align: middle;
 }
