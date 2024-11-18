@@ -23,3 +23,6 @@
 - 🏅[GitHub Foundations prep](https://education.github.com/experiences/foundations_certificate)
 
 ¡Esperamos tus contribuciones y verte en el leaderboard 🏆💗!
+
+> [!NOTE]
+> 🚨Todas las actividades relacionadas a Ranitas Lúdicas se rigne en torno al siguiente [código de conducta](https://github.com/Ranitas-Ludicas/.github?tab=coc-ov-file)
