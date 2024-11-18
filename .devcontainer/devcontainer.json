@@ -1,0 +1,24 @@
+{
+    "name": "SANDA-Pre-GameJam",
+    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:14",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "14.x"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "ms-vscode.vscode-typescript-tslint-plugin",
+                "ritwickdey.LiveServer",
+                "streetsidesoftware.code-spell-checker"
+            ]
+        },
+        "settings": {
+            "terminal.integrated.defaultProfile.linux": "bash"
+        }
+    },
+    "postCreateCommand": "npm install"
+}
