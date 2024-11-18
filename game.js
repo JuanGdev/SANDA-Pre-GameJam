@@ -67,6 +67,10 @@ function startGame() {
     document.getElementById('retry-button').style.display = 'none'; // Hide the retry button
     document.getElementById('message-container').innerHTML = ''; // Clear message container
     score = 0; // Reset the score
+    initializeBricks(); // Ensure bricks are loaded when the game starts
+    balls = [new Ball()]; // Reset the balls array to ensure a new ball is created
+    powerUps = []; // Reset the powerUps array to ensure no power-ups are active
+    particles = []; // Reset the particles array to ensure no particles are active
     loop(); // Start the game loop
 }
 
