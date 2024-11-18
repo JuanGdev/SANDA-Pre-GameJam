@@ -14,8 +14,12 @@
 </head>
 <body onclick="getAudioContext().resume()">
     <header>
-        <h1>Breakout Game</h1>
+        <h1 id="main-title-header">💥🔴💨🐸    Breakout Ranitas SANDA  👾💥🔴💨</h1>
     </header>
+
+    <div id="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint corporis adipisci incidunt possimus nobis ducimus dignissimos quis optio, ad voluptates voluptatum ratione dolore animi accusamus? Exercitationem repellendus ipsum nihil deleniti?</p>
+    </div>
 
     <div id="scoreboard-container"></div> <!-- Scoreboard container -->
 
@@ -32,12 +36,12 @@
         <ol id="leaderboard-list"></ol>
     </div> <!-- Leaderboard container -->
     <div id="json-copy-container">
-        <h2>Updated Leaderboard JSON</h2>
+        <h2 class="leaderboard-header">Updated Leaderboard JSON</h2>
         <pre><code id="leaderboard-json" class="language-json"></code></pre>
         <button id="copy-button" onclick="copyToClipboard()">Copy to Clipboard</button>
     </div>
     <footer>
-        <p>&copy; 2023 Breakout Game</p>
+        <p>Hecho con 💗 por Ranitas Lúdicas🐸✨🚵🏾‍♂️</p>
     </footer>
 </body>
 </html>

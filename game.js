@@ -21,6 +21,7 @@ let contributors = [];
 let tail = [];
 let activeMessages = [];
 let leaderboard = [];
+let stars = [];
 
 function preload() {
     wallHitSound = loadSound('sounds/wall-hit.mp3');
@@ -43,7 +44,12 @@ function preload() {
 
 function setup() {
     let canvas = createCanvas(800, 600);
-    canvas.parent('game-container');
+    let gameContainer = document.getElementById('game-container');
+    if (gameContainer) {
+        canvas.parent('game-container');
+    } else {
+        console.error('game-container element not found');
+    }
     noLoop(); // Don't start the game until the user clicks the start button
     initializeBricks(); // Initialize bricks on setup
     paddle = new Paddle();
@@ -51,6 +57,7 @@ function setup() {
     brickWidth = width / cols;
     powerUps = []; // Clear existing power-ups
     particles = []; // Clear existing particles
+    initializeStars(); // Initialize stars for the background
     updateScoreboard();
 }
 
@@ -81,7 +88,7 @@ function startGame() {
 }
 
 function draw() {
-    background(0);
+    drawStars(); // Draw stars on the background
     if (paddle && balls.length > 0) {
         paddle.show();
         paddle.update();
@@ -514,23 +521,37 @@ function loadLeaderboard() {
 
 function updateLeaderboardDisplay() {
     let leaderboardContainer = document.getElementById('leaderboard-container');
-    leaderboardContainer.innerHTML = '<h2>Leaderboard</h2>';
+    leaderboardContainer.innerHTML = `
+        <h2 class="leaderboard-header">🏅🏆Leaderboard🏆🏅</h2>
+        <div class="leaderboard-titles">
+            <div class="name">Name</div>
+            <div class="score">Score</div>
+            <div class="message">Message</div>
+            <div class="date">Date</div>
+            <div class="time">Time</div>
+        </div>
+        <ol id="leaderboard-list"></ol>
+    `;
+    let leaderboardList = document.getElementById('leaderboard-list');
     leaderboard.forEach(player => {
         let timeInMinutes = (player.time / 60000).toFixed(2); // Convert time to minutes and format to 2 decimal places
-        let item = document.createElement('div');
+        let item = document.createElement('li');
         item.className = 'leaderboard-item';
-        item.innerHTML = `<img src="${player.avatar_url}" alt="avatar" width="50" height="50">
-                          <div>${player.name} - ${player.score}</div>
-                          <div class="message">${player.message}</div>
-                          <div class="date">Date: ${player.date}</div>
-                          <div class="time">Time: ${timeInMinutes} min</div>`;
-        leaderboardContainer.appendChild(item);
+        item.innerHTML = `
+            <img src="${player.avatar_url}" alt="avatar" width="50" height="50">
+            <div class="name">${player.name}</div>
+            <div class="score">${player.score}</div>
+            <div class="message">${player.message}</div>
+            <div class="date">${player.date}</div>
+            <div class="time">${timeInMinutes} min</div>
+        `;
+        leaderboardList.appendChild(item);
     });
 
-    // Actualiza el contenido del div json-copy-container con el código JSON del leaderboard actualizado
+    // Update the content of the json-copy-container div with the updated leaderboard JSON
     let leaderboardJsonContainer = document.getElementById('leaderboard-json');
     leaderboardJsonContainer.textContent = JSON.stringify(leaderboard, null, 2);
-    Prism.highlightElement(leaderboardJsonContainer); // Resalta el código JSON usando Prism.js
+    Prism.highlightElement(leaderboardJsonContainer); // Highlight the JSON code using Prism.js
 }
 
 function copyToClipboard() {
@@ -539,5 +560,24 @@ function copyToClipboard() {
         alert('Leaderboard JSON copied to clipboard!');
     }).catch(err => {
         console.error('Failed to copy text: ', err);
+    });
+}
+
+function initializeStars() {
+    for (let i = 0; i < 100; i++) {
+        stars.push({
+            x: random(width),
+            y: random(height),
+            size: random(1, 3)
+        });
+    }
+}
+
+function drawStars() {
+    background(0);
+    noStroke();
+    fill(255);
+    stars.forEach(star => {
+        ellipse(star.x, star.y, star.size);
     });
 }

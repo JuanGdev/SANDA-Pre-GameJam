@@ -14,7 +14,7 @@ header, footer, main, div, canvas {
 }
 
 header, footer {
-    background-color: #333;
+    background-color: black; /* Change header and footer background color to black */
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -136,17 +136,38 @@ main {
 
 #leaderboard-container {
     width: 100%;
-    background-color: #333;
+    background-color: black; /* Change leaderboard container background color to black */
     color: white;
     padding: 20px;
     text-align: center;
 }
 
+.leaderboard-header {
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+    font-size: 30px;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.leaderboard-titles {
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
+    color: lightblue; /* Change text color to light blue */
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+}
+
 .leaderboard-item {
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
     margin: 10px 0;
+    color: lightblue; /* Change text color to light blue */
+    font-family: 'Press Start 2P', cursive; /* Retro font */
 }
 
 .leaderboard-item img {
@@ -154,21 +175,29 @@ main {
     margin-right: 20px;
 }
 
+.leaderboard-item .name,
+.leaderboard-item .score,
+.leaderboard-item .message,
+.leaderboard-item .date,
+.leaderboard-item .time {
+    flex: 1;
+    text-align: center;
+}
+
 .leaderboard-item .message {
-    margin-left: 10px;
     font-size: 14px;
     color: #ccc;
 }
 
-.leaderboard-item .date, .leaderboard-item .time {
-    margin-left: 10px;
+.leaderboard-item .date,
+.leaderboard-item .time {
     font-size: 14px;
     color: #ccc;
 }
 
 #scoreboard-container {
     width: 100%;
-    background-color: #222;
+    background-color: black; /* Change scoreboard container background color to black */
     color: white;
     padding: 20px;
     text-align: center;
@@ -228,16 +257,8 @@ main {
     background-color: transparent; /* Set background to transparent */
 }
 
-#leaderboard-header {
-    font-family: 'Press Start 2P', cursive; /* Retro font */
-    font-size: 24px;
-    text-transform: uppercase;
-    color: white;
-    margin-bottom: 10px;
-}
-
 #json-copy-container {
-    background-color: #333;
+    background-color: black; /* Change JSON copy container background color to black */
     color: white;
     padding: 20px;
     text-align: center;
@@ -259,4 +280,44 @@ main {
 #copy-button:hover {
     background-color: #fff;
     color: #000;
+}
+
+#main-title {
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+    font-size: 48px;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.leaderboard-header {
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+    font-size: 30px;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#description {
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    margin: 20px;
+}
+
+#main-title-header {
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+    font-size: 48px;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+#description-header {
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+    font-size: 24px;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }
