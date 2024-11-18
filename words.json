@@ -1,14 +1,22 @@
-
 {
-    "words": [
-        "example",
-        "words",
-        "for",
-        "typing",
-        "game",
-        "additional",
-        "words",
-        "for",
-        "practice"
+    "specialMessages": [
+        {
+            "text": "Hola Mundoooooooo\n🌎🌍🌏",
+            "fontSize": 32,
+            "duration": 2000,
+            "color": "#D8BFD8",
+            "style": "bold",
+            "x": 500,
+            "y": 500
+        },
+        {
+            "text": "Saludos de parte de Ranitas Lúdicas🐸💗",
+            "fontSize": 60,
+            "duration": 2500,
+            "color": "#9AC669",
+            "style": "bold",
+            "x": 300,
+            "y": 300
+        }
     ]
 }

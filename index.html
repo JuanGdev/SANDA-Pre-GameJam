@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breakout Game</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
     <script src="game.js"></script>
@@ -17,6 +18,7 @@
         <div id="game-container">
             <button id="start-button" onclick="startGame()">Start Game</button>
             <button id="retry-button" onclick="startGame()" style="display: none;">Retry</button>
+            <div id="message-container"></div> <!-- Message container -->
         </div>
     </main>
     <footer>
