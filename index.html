@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breakout Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+    <script src="game.js"></script>
+</head>
+<body onclick="getAudioContext().resume()">
+    <header>
+        <h1>Breakout Game</h1>
+    </header>
+    <main>
+        <div id="game-container">
+            <button id="start-button" onclick="startGame()">Start Game</button>
+            <button id="retry-button" onclick="startGame()" style="display: none;">Retry</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Breakout Game</p>
+    </footer>
+</body>
+</html>
