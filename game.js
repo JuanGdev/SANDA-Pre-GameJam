@@ -45,7 +45,6 @@ function setup() {
     let canvas = createCanvas(800, 600);
     canvas.parent('game-container');
     noLoop(); // Don't start the game until the user clicks the start button
-    canvas.elt.addEventListener('wheel', handleMouseWheel);
     initializeBricks(); // Initialize bricks on setup
     paddle = new Paddle();
     balls = [new Ball()]; // Initialize with one ball
@@ -171,12 +170,7 @@ function keyReleased() {
 }
 
 function handleMouseWheel(event) {
-    if (event.deltaY < 0) {
-        paddle.move(-1); // Scroll up
-    } else {
-        paddle.move(1); // Scroll down
-    }
-    setTimeout(() => paddle.move(0), 100); // Stop movement after a short delay
+    // Disable scroll wheel inputs
 }
 
 class Paddle {
@@ -440,17 +434,38 @@ function updateLeaderboard() {
                 let selectedContributor = contributors[selectedOption - 1];
 
                 if (selectedContributor) {
-                    leaderboard.push({
+                    let date = new Date();
+                    let newEntry = {
                         name: selectedContributor.name,
                         score: score,
                         message: playerMessage,
-                        avatar_url: selectedContributor.avatar_url
+                        avatar_url: selectedContributor.avatar_url,
+                        date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
+                        time: millis() // Time in milliseconds
+                    };
+                    leaderboard.push(newEntry);
+                    leaderboard.sort((a, b) => {
+                        if (b.score === a.score) {
+                            return a.time - b.time; // Sort by time ascending if scores are equal
+                        }
+                        return b.score - a.score; // Sort by score descending
                     });
-                    leaderboard.sort((a, b) => b.score - a.score); // Sort by score descending
 
                     updateLeaderboardDisplay();
                     saveLeaderboard(); // Save leaderboard data
                     updateScoreboard();
+
+                    // Save new entry to localStorage
+                    localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+
+                    // Add new entry to leaderboard.json locally
+                    fetch('leaderboard.json')
+                        .then(response => response.json())
+                        .then(leaderboardData => {
+                            leaderboardData.push(newEntry);
+                            localStorage.setItem('leaderboardData', JSON.stringify(leaderboardData));
+                        })
+                        .catch(error => console.error('Error updating local leaderboard.json:', error));
                 } else {
                     alert("Invalid selection. Please try again.");
                 }
@@ -479,17 +494,21 @@ function saveLeaderboard() {
     const leaderboardData = JSON.stringify(leaderboard);
     localStorage.setItem('leaderboard', leaderboardData);
 }
-function saveLeaderboard() {
-    const leaderboardData = JSON.stringify(leaderboard);
-    localStorage.setItem('leaderboard', leaderboardData);
-    saveJSON(leaderboard, 'leaderboard.json'); // Save leaderboard to a JSON file
-}
 
 function loadLeaderboard() {
-    const leaderboardData = localStorage.getItem('leaderboard');
+    const leaderboardData = localStorage.getItem('leaderboardData');
     if (leaderboardData) {
         leaderboard = JSON.parse(leaderboardData);
         updateLeaderboardDisplay();
+    } else {
+        fetch('leaderboard.json')
+            .then(response => response.json())
+            .then(data => {
+                leaderboard = data;
+                localStorage.setItem('leaderboardData', JSON.stringify(leaderboard));
+                updateLeaderboardDisplay();
+            })
+            .catch(error => console.error('Error loading leaderboard:', error));
     }
 }
 
@@ -497,11 +516,28 @@ function updateLeaderboardDisplay() {
     let leaderboardContainer = document.getElementById('leaderboard-container');
     leaderboardContainer.innerHTML = '<h2>Leaderboard</h2>';
     leaderboard.forEach(player => {
+        let timeInMinutes = (player.time / 60000).toFixed(2); // Convert time to minutes and format to 2 decimal places
         let item = document.createElement('div');
         item.className = 'leaderboard-item';
         item.innerHTML = `<img src="${player.avatar_url}" alt="avatar" width="50" height="50">
                           <div>${player.name} - ${player.score}</div>
-                          <div class="message">${player.message}</div>`;
+                          <div class="message">${player.message}</div>
+                          <div class="date">Date: ${player.date}</div>
+                          <div class="time">Time: ${timeInMinutes} min</div>`;
         leaderboardContainer.appendChild(item);
+    });
+
+    // Actualiza el contenido del div json-copy-container con el código JSON del leaderboard actualizado
+    let leaderboardJsonContainer = document.getElementById('leaderboard-json');
+    leaderboardJsonContainer.textContent = JSON.stringify(leaderboard, null, 2);
+    Prism.highlightElement(leaderboardJsonContainer); // Resalta el código JSON usando Prism.js
+}
+
+function copyToClipboard() {
+    const jsonText = document.getElementById('leaderboard-json').textContent;
+    navigator.clipboard.writeText(jsonText).then(() => {
+        alert('Leaderboard JSON copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
     });
 }

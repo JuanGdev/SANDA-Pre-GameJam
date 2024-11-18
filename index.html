@@ -6,15 +6,16 @@
     <title>Breakout Game</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
     <script src="game.js"></script>
 </head>
 <body onclick="getAudioContext().resume()">
     <header>
         <h1>Breakout Game</h1>
     </header>
-
 
     <div id="scoreboard-container"></div> <!-- Scoreboard container -->
 
@@ -25,12 +26,16 @@
             <div id="message-container"></div> <!-- Message container -->
             <div id="game-over-text">Game Over</div> <!-- Game Over text -->
         </div>
-
     </main>
     <div id="leaderboard-container">
         <h2 id="leaderboard-header">🏅🏆Leaderboard🏆🏅</h2>
         <ol id="leaderboard-list"></ol>
     </div> <!-- Leaderboard container -->
+    <div id="json-copy-container">
+        <h2>Updated Leaderboard JSON</h2>
+        <pre><code id="leaderboard-json" class="language-json"></code></pre>
+        <button id="copy-button" onclick="copyToClipboard()">Copy to Clipboard</button>
+    </div>
     <footer>
         <p>&copy; 2023 Breakout Game</p>
     </footer>
