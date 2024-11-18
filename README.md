@@ -8,7 +8,8 @@
 
 ¡Gracias por tu interés en contribuir a este proyecto! Por favor, revisa el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para obtener instrucciones detalladas sobre cómo puedes contribuir.
 
-## Crear un Codespace
+> [!IMPORTANT]
+> Este proyecto está alojado en un Codespace, para crear uno sigue las instrucciones que aparecen abajo 🔽🔽
 
 1. Ve a la página del repositorio en GitHub.
 2. Haz clic en el botón `Code` y selecciona `Open with Codespaces`.
