@@ -1,10 +1,16 @@
 body {
     margin: 0;
-    overflow: hidden;
+    overflow-y: scroll; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Disable horizontal scrolling */
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     height: 100vh;
+    background-color: black; /* Set background color to black */
+}
+
+header, footer, main, div, canvas {
+    background-color: black; /* Set all elements background color to black */
 }
 
 header, footer {
@@ -28,6 +34,8 @@ main {
     justify-content: center;
     align-items: center;
     position: relative;
+    border: 4px solid white; /* Add white border */
+    box-shadow: 0 0 0 4px black, 0 0 0 8px white, 0 0 0 12px black; /* Pixel art style border */
 }
 
 #game-over {
@@ -38,11 +46,12 @@ main {
     font-size: 48px;
     color: red;
     display: none;
+    background-color: transparent; /* Set background to transparent */
 }
 
 #retry-button {
     position: absolute;
-    top: 50%;
+    top: 60%; /* Adjusted to avoid overlap with Game Over text */
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 24px;
@@ -123,4 +132,100 @@ main {
 #start-button:hover {
     background-color: #fff;
     color: #000;
+}
+
+#leaderboard-container {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.leaderboard-item img {
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.leaderboard-item .message {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+#scoreboard-container {
+    width: 100%;
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.scoreboard-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.scoreboard-item img {
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.scoreboard-item .message {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+#info-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#score-display {
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+    font-size: 24px;
+    text-transform: uppercase;
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+#game-over-text {
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+    font-size: 48px;
+    color: red;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none;
+    background-color: transparent; /* Set background to transparent */
+}
+
+#leaderboard-header {
+    font-family: 'Press Start 2P', cursive; /* Retro font */
+    font-size: 24px;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 10px;
 }

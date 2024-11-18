@@ -14,13 +14,23 @@
     <header>
         <h1>Breakout Game</h1>
     </header>
+
+
+    <div id="scoreboard-container"></div> <!-- Scoreboard container -->
+
     <main>
         <div id="game-container">
             <button id="start-button" onclick="startGame()">Start Game</button>
             <button id="retry-button" onclick="startGame()" style="display: none;">Retry</button>
             <div id="message-container"></div> <!-- Message container -->
+            <div id="game-over-text">Game Over</div> <!-- Game Over text -->
         </div>
+
     </main>
+    <div id="leaderboard-container">
+        <h2 id="leaderboard-header">🏅🏆Leaderboard🏆🏅</h2>
+        <ol id="leaderboard-list"></ol>
+    </div> <!-- Leaderboard container -->
     <footer>
         <p>&copy; 2023 Breakout Game</p>
     </footer>

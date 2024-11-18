@@ -6,6 +6,7 @@ let cols = 10;
 let brickWidth;
 let brickHeight = 20;
 let score = 0;
+let highScore = 0;
 
 let wallHitSound;
 let powerUpSound;
@@ -19,6 +20,7 @@ let particles = [];
 let contributors = [];
 let tail = [];
 let activeMessages = [];
+let leaderboard = [];
 
 function preload() {
     wallHitSound = loadSound('sounds/wall-hit.mp3');
@@ -35,6 +37,8 @@ function preload() {
     loadJSON('contributors.json', (data) => {
         contributors = data;
     });
+    loadHighScore();
+    loadLeaderboard(); // Load leaderboard data
 }
 
 function setup() {
@@ -48,6 +52,7 @@ function setup() {
     brickWidth = width / cols;
     powerUps = []; // Clear existing power-ups
     particles = []; // Clear existing particles
+    updateScoreboard();
 }
 
 function initializeBricks() {
@@ -65,12 +70,14 @@ function startGame() {
     getAudioContext().resume(); // Resume the AudioContext after a user gesture
     document.getElementById('start-button').style.display = 'none'; // Hide the start button
     document.getElementById('retry-button').style.display = 'none'; // Hide the retry button
+    document.getElementById('game-over-text').style.display = 'none'; // Hide the Game Over text
     document.getElementById('message-container').innerHTML = ''; // Clear message container
     score = 0; // Reset the score
     initializeBricks(); // Ensure bricks are loaded when the game starts
     balls = [new Ball()]; // Reset the balls array to ensure a new ball is created
     powerUps = []; // Reset the powerUps array to ensure no power-ups are active
     particles = []; // Reset the particles array to ensure no particles are active
+    updateScoreboard(); // Update the scoreboard with the reset score
     loop(); // Start the game loop
 }
 
@@ -133,18 +140,15 @@ function draw() {
             activeMessages.splice(index, 1);
         }
     });
-    fill(255);
-    textSize(24);
-    text('Score: ' + score, 10, height - 10);
+    updateScoreboard(); // Update the scoreboard with the current score
     if (balls.length === 0) {
         noLoop();
-        textSize(32);
-        textAlign(CENTER);
-        fill(255);
-        text('Game Over', width / 2, height / 2);
-        gameOverSound.play();
+        document.getElementById('game-over-text').style.display = 'block'; // Show the Game Over text
         document.getElementById('retry-button').style.display = 'block'; // Show the retry button
-        document.getElementById('retry-button').style.top = (height / 2 + 40) + 'px'; // Position below "Game Over"
+        if (score > highScore) {
+            updateLeaderboard();
+        }
+        saveHighScore();
     }
     if (bricks.length === 0 && balls.length > 0) {
         showCredits();
@@ -232,13 +236,9 @@ class Ball {
             balls.splice(balls.indexOf(this), 1);
             if (balls.length === 0) {
                 noLoop();
-                textSize(32);
-                textAlign(CENTER);
-                fill(255);
-                text('Game Over', width / 2, height / 2);
                 gameOverSound.play();
+                document.getElementById('game-over-text').style.display = 'block'; // Show the Game Over text
                 document.getElementById('retry-button').style.display = 'block'; // Show the retry button
-                document.getElementById('retry-button').style.top = (height / 2 + 40) + 'px'; // Position below "Game Over"
             }
         }
     }
@@ -424,4 +424,84 @@ function showCredits() {
     creditsContainer.style('color', 'white');
     creditsContainer.style('font-size', '24px');
     creditsContainer.style('animation', 'scroll-up 10s linear forwards');
+}
+
+function updateLeaderboard() {
+    if (score > highScore) {
+        fetch('contributors.json')
+            .then(response => response.json())
+            .then(data => {
+                contributors = data;
+                let playerMessage = prompt("Enter a message (max 50 characters):");
+                playerMessage = playerMessage.substring(0, 50); // Limit message length
+
+                let contributorOptions = contributors.map((contributor, index) => `${index + 1}. ${contributor.name}`).join('\n');
+                let selectedOption = prompt(`Select your profile:\n${contributorOptions}`);
+                let selectedContributor = contributors[selectedOption - 1];
+
+                if (selectedContributor) {
+                    leaderboard.push({
+                        name: selectedContributor.name,
+                        score: score,
+                        message: playerMessage,
+                        avatar_url: selectedContributor.avatar_url
+                    });
+                    leaderboard.sort((a, b) => b.score - a.score); // Sort by score descending
+
+                    updateLeaderboardDisplay();
+                    saveLeaderboard(); // Save leaderboard data
+                    updateScoreboard();
+                } else {
+                    alert("Invalid selection. Please try again.");
+                }
+            })
+            .catch(error => console.error('Error loading contributors:', error));
+    }
+}
+
+function saveHighScore() {
+    if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('highScore', highScore);
+    }
+}
+
+function loadHighScore() {
+    highScore = localStorage.getItem('highScore') || 0;
+}
+
+function updateScoreboard() {
+    let scoreboardContainer = document.getElementById('scoreboard-container');
+    scoreboardContainer.innerHTML = `<h2>High Score: ${highScore}</h2><h2>Score: ${score}</h2>`;
+}
+
+function saveLeaderboard() {
+    const leaderboardData = JSON.stringify(leaderboard);
+    localStorage.setItem('leaderboard', leaderboardData);
+}
+function saveLeaderboard() {
+    const leaderboardData = JSON.stringify(leaderboard);
+    localStorage.setItem('leaderboard', leaderboardData);
+    saveJSON(leaderboard, 'leaderboard.json'); // Save leaderboard to a JSON file
+}
+
+function loadLeaderboard() {
+    const leaderboardData = localStorage.getItem('leaderboard');
+    if (leaderboardData) {
+        leaderboard = JSON.parse(leaderboardData);
+        updateLeaderboardDisplay();
+    }
+}
+
+function updateLeaderboardDisplay() {
+    let leaderboardContainer = document.getElementById('leaderboard-container');
+    leaderboardContainer.innerHTML = '<h2>Leaderboard</h2>';
+    leaderboard.forEach(player => {
+        let item = document.createElement('div');
+        item.className = 'leaderboard-item';
+        item.innerHTML = `<img src="${player.avatar_url}" alt="avatar" width="50" height="50">
+                          <div>${player.name} - ${player.score}</div>
+                          <div class="message">${player.message}</div>`;
+        leaderboardContainer.appendChild(item);
+    });
 }
