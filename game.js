@@ -43,6 +43,11 @@ function setup() {
     noLoop(); // Don't start the game until the user clicks the start button
     canvas.elt.addEventListener('wheel', handleMouseWheel);
     initializeBricks(); // Initialize bricks on setup
+    paddle = new Paddle();
+    balls = [new Ball()]; // Initialize with one ball
+    brickWidth = width / cols;
+    powerUps = []; // Clear existing power-ups
+    particles = []; // Clear existing particles
 }
 
 function initializeBricks() {
@@ -62,12 +67,6 @@ function startGame() {
     document.getElementById('retry-button').style.display = 'none'; // Hide the retry button
     document.getElementById('message-container').innerHTML = ''; // Clear message container
     score = 0; // Reset the score
-    paddle = new Paddle();
-    balls = [new Ball()]; // Initialize with one ball
-    brickWidth = width / cols;
-    powerUps = []; // Clear existing power-ups
-    particles = []; // Clear existing particles
-    initializeBricks(); // Initialize bricks for the game
     loop(); // Start the game loop
 }
 
