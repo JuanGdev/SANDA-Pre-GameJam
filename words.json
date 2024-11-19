@@ -17,6 +17,15 @@
             "style": "bold",
             "x": 300,
             "y": 300
+        },
+        {
+            "text": "Saludos",
+            "fontSize": 100,
+            "duration": 2000,
+            "color": "#D8BFD8",
+            "style": "bold",
+            "x": 500,
+            "y": 500
         }
     ]
 }
