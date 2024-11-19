@@ -20,12 +20,14 @@ Este proyecto es un juego de Breakout pensado para que puedas poner en práctica
 > [!WARNING]
 > Por favor, revisa el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para obtener instrucciones detalladas sobre cómo puedes contribuir.
 
-## Recursos
+## Recursos útiles
 
+- 📸[Slides del taller. PENDIENTES]()
 - 🎒[Aquiere el Student Developer Pack](https://education.github.com/discount_requests/application?utm_source=2024-11-22-GITHUBFORGAMEDEVS🎲)
 - [Documentación de Git y GitHub](https://docs.github.com/en/get-started)
 - [Documentación de p5.js](https://p5js.org/reference/)
 - 🏅[GitHub Foundations prep](https://education.github.com/experiences/foundations_certificate)
+- [Git LFS](https://www.atlassian.com/git/tutorials/git-lfs)
 
 ¡Esperamos tus contribuciones y verte en el leaderboard 🏆💗!
 
