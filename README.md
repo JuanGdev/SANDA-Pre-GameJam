@@ -22,7 +22,7 @@ Este proyecto es un juego de Breakout pensado para que puedas poner en práctica
 
 ## Recursos útiles
 
-- 📸[Slides del taller. PENDIENTES]()
+- 📸[Slides del taller](https://ugtomx-my.sharepoint.com/:p:/g/personal/j_aguilerahuerta_ugto_mx/EUnKRXqwxDxEkR8UBRZeM6wBJwUbxLX5eK8K72I-0DlDAw?e=sRuiYn)
 - 🎒[Aquiere el Student Developer Pack](https://education.github.com/discount_requests/application?utm_source=2024-11-22-GITHUBFORGAMEDEVS🎲)
 - [Documentación de Git y GitHub](https://docs.github.com/en/get-started)
 - [Documentación de p5.js](https://p5js.org/reference/)
