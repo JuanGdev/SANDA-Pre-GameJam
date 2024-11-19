@@ -2,7 +2,7 @@
 
 # 💥🔴💨🐸    Breakout Ranitas SANDA  👾💥🔴💨
 
-![image](https://github.com/user-attachments/assets/6586e1bb-b981-4745-af82-a22dd4241fe0)
+![image](https://github.com/user-attachments/assets/5dbdd00a-0aae-4b28-8497-df845062f470)
 
 
 **¡Bienvenido al proyecto Breakout Ranitas SANDA!**
