@@ -68,13 +68,4 @@
 
 6. Haz clic en `Create pull request` para enviar tu pull request a revisión.
 
-¡Gracias por tu contribución!
-
-
-## Recursos
-
-- [Documentación de GitHub Codespaces](https://docs.github.com/en/codespaces)
-- [Documentación de Git y GitHub](https://docs.github.com/en/get-started)
-- [Documentación de p5.js](https://p5js.org/reference/)
-
-¡Esperamos tus contribuciones!
+¡Esperamos tu Pull Request!

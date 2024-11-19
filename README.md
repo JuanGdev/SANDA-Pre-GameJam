@@ -15,12 +15,14 @@
 2. Haz clic en el botón `Code` y selecciona `Open with Codespaces`.
 3. Si no tienes un Codespace existente, crea uno nuevo.
 
-## Recursos
+## Recursos útiles
 
+- 📸[Slides del taller. PENDIENTES]()
 - 🎒[Aquiere el Student Developer Pack](https://education.github.com/discount_requests/application?utm_source=2024-11-22-GITHUBFORGAMEDEVS🎲)
 - [Documentación de Git y GitHub](https://docs.github.com/en/get-started)
 - [Documentación de p5.js](https://p5js.org/reference/)
 - 🏅[GitHub Foundations prep](https://education.github.com/experiences/foundations_certificate)
+- [Git LFS](https://www.atlassian.com/git/tutorials/git-lfs)
 
 ¡Esperamos tus contribuciones y verte en el leaderboard 🏆💗!
 
