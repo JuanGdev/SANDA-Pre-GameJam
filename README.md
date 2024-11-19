@@ -1,11 +1,10 @@
 <!-- filepath: /workspaces/SANDA-Pre-GameJam/README.md -->
 
-# 💥🔴💨🐸    Breakout Ranitas SANDA  👾💥🔴💨
 
 ![repo cover](https://github.com/user-attachments/assets/67a31864-5998-4b9c-89f4-07e66698e13e)
 
 
-**¡Bienvenido al proyecto Breakout Ranitas SANDA!**
+# ¡Bienvenidx al proyecto Breakout Ranitas SANDA!
 
 Este proyecto es un juego de Breakout pensado para que puedas poner en práctica algunos conocimientos básicos de Git y GItHub y conozcas algunas de las herramientas que tienes a tu alcance.
 
